@@ -1,0 +1,158 @@
+.main {
+  &::before {
+    content: "";
+    transition: 0.24s all ease-in;
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    background-color: white;
+    z-index: 1101;
+    opacity: 0;
+    visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &::after {
+    content: "";
+    visibility: hidden;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 50%;
+    border: 5px solid transparent;
+    border-top-color: #17a297;
+    animation: spin 1s linear infinite;
+    z-index: 1111;
+  }
+
+  &.page-loading {
+    &::before {
+      visibility: visible;
+      opacity: 0.8;
+    }
+
+    &::after {
+      visibility: visible;
+      opacity: 0.4;
+    }
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+::ng-deep {
+  .editor {
+    background-color: #f7f7f7;
+
+	.dx-multiview.dx-swipeable {
+		height: 700px !important;
+	}
+
+    &.readonly {
+      .dx-tabs-wrapper > .dx-tab:not(:first-child) {
+        display: none;
+      }
+
+      .dx-toolbar-items-container {
+        .dx-toolbar-item {
+          display: none;
+        }
+        .dx-toolbar-item:nth-child(3),
+        .dx-toolbar-item:nth-child(4) {
+          display: table-cell;
+        }
+      }
+    }
+
+    .dxreRuler {
+      transition: left 0.2s ease;
+    }
+    .dxreView {
+      max-width: 100%;
+      transition: max-width 0.2s ease;
+    }
+
+    .dx-tabpanel > .dx-tabpanel-tabs .dx-tabs {
+      .dx-tab {
+        .dx-tab-content {
+          color: black;
+        }
+
+        &:nth-child(7) {
+          width: 120px;
+
+          &.dx-state-active {
+            background: white !important;
+          }
+
+          .dx-tab-content {
+            display: block;
+            background: white;
+            padding: 3px;
+
+            .dx-tab-text {
+              color: #17a297 !important;
+            }
+          }
+        }
+        &:nth-child(8) {
+          width: 112px;
+
+          &.dx-state-active {
+            background: white !important;
+          }
+
+          .dx-tab-content {
+            display: block;
+            background: white;
+            padding: 3px;
+
+            .dx-tab-text {
+              color: #17a297 !important;
+            }
+          }
+        }
+      }
+    }
+
+    &.painter-format {
+      .dxreColumn {
+        cursor: -webkit-image-set(
+              url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAWCAMAAACWh252AAAAQlBMVEVHcEwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABz07T7AAAAFXRSTlMASwj1EeVcRbTw0S/B6oRlsKDcOTfaTrUAAAAAYUlEQVQoz8WORw7AIAwETTWQXvz/r0ZRmomA3MKcvNZotQB/oYIFEVRekMs8GZT76ejExcpKeBx08yq5MnHKwvOLBL4hKWR/PKQ2RIm+6ioJSLYkaGH6btB5wbcIzeihChva2Ah1iGy3cAAAAABJRU5ErkJggg==)
+                1x,
+              url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAAAsCAMAAADigU7NAAAAZlBMVEVHcEwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACLZRe2AAAAIXRSTlMA9RAX0yUI40n4tQGJGsyU8VpHOOvGPNt8LV2hrG2aYUs0eqYlAAAAwklEQVRIx+3W2Q6CMBRF0cNYyuCI4Kz7/3/SJxODQqDEqJHz2GGlN23TSlO+LJ6ZzSNJ8rcz4zkAAPYkJSWAAxAX6yMsK8tmFcT31sTQiEk6kAt2Qf7Y8jQfTNcyzpA+FdZMFxBANApQs5vWfBJ4Ne59QNs29gbaDlJvQEPHvQ1w3saBQHtXzys+GuguYQL+BojgOgbIUqh9dyDLKUM2hRsQR/sQWwU1Xr72HQCAcCUVB8fH1Zp0mUmSdvNwMX13fic3WPk1hE3qWf0AAAAASUVORK5CYII=)
+                2x
+            )
+            5 10,
+          text;
+        width: 5px;
+        height: 5px;
+      }
+    }
+  }
+
+  .green-panel {
+    background: #17a297;
+
+    .mat-simple-snack-bar-content {
+      color: white;
+      font-weight: 700;
+    }
+  }
+
+  .save-actions {
+    box-shadow: 0px 0px 20px 0px #0000001a;
+  }
+}
