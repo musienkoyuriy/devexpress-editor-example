@@ -25,7 +25,12 @@ export class RichEditorDirective implements AfterViewInit, OnDestroy {
 	private readonly editorOptions: Options = inject(RICH_EDITOR_OPTIONS, { skipSelf: true });
 
 	ngAfterViewInit(): void {
+		this.editorOptions.fonts!.fonts!.push({ name: 'Mulish', fontFamily: 'Mulish' });
+		this.editorOptions.fonts!.mappings!.defaultFontName = 'Mulish';
+
 		this.editor = create(this._elementRef.nativeElement, this.editorOptions);
+
+		this.editor.document.fonts.create('Mulish', 'Mulish');
 	}
 
 	ngOnDestroy(): void {
