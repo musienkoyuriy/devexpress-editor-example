@@ -14,6 +14,8 @@ export const RichEditorOptionsProvider: FactoryProvider = {
 		options.mailMerge!.viewMergedData = true;
 		options.confirmOnLosingChanges!.enabled = false;
 
+		options.fonts!.mappings!.defaultFontName = 'Mulish';
+
 		return options;
 	},
 };
