@@ -1,0 +1,12 @@
+[install]
+peer = true
+dev = true
+optional = true
+production = false
+ 
+ 
+[install.registry]
+url = "https://registry.npmjs.org/"
+username = "pdc-sourcing"
+# Bun v1.0.3+ supports using an environment variable here
+password = "cc2h6piqly644ldxtp6lwhnut7vxtshywr4guwggosfuaapfywga"

@@ -25,11 +25,19 @@ export class RichEditorDirective implements AfterViewInit, OnDestroy {
 	private readonly editorOptions: Options = inject(RICH_EDITOR_OPTIONS, { skipSelf: true });
 
 	ngAfterViewInit(): void {
-		this.editorOptions.fonts!.mappings!.defaultFontName = 'Mulish';
-
 		this.editor = create(this._elementRef.nativeElement, this.editorOptions);
 
-		this.editor.document.fonts.create('Mulish', 'Mulish');
+		const position = this.editor.selection.active;
+		const activeSubDocument = this.editor.selection.activeSubDocument;
+
+		const field = activeSubDocument.fields.createMergeField(position, 'MF value');
+
+		const text = activeSubDocument.getText(field.codeInterval);
+
+		const replaced = text.replace(/["]+/g, '');
+
+		activeSubDocument.deleteText(field.codeInterval);
+		activeSubDocument.insertText(field.codeInterval.start, replaced);
 	}
 
 	ngOnDestroy(): void {
